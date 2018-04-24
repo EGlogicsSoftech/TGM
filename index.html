@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Derma Source</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <link rel="shortcut icon" href="/assets/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/mobile-angular-ui-hover.min.css" />
+    <link rel="stylesheet" href="css/mobile-angular-ui-base.min.css" />
+    <link rel="stylesheet" href="css/mobile-angular-ui-desktop.min.css" />
+    <link rel="stylesheet" href="css/demo.css" />
+    <script type="text/javascript" src="js/SocialSharing.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/mobile-angular-ui.min.js"></script>
+    <!-- Required to use $touch, $swipe, $drag and $translate services -->
+    <script src="js/mobile-angular-ui.gestures.min.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="css/inappbrowser.css"></script>
+    <script src="js/themeablebrowser.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() 
+    {
+           var ref = cordova.InAppBrowser.open('http://www.grandmasters.in', '_blank', 'location=no','toolbar=no');
+		   window.plugins.OneSignal
+		   .startInit("bd9eca6e-b803-4701-a712-ffd187a61ee3")
+		   .handleNotificationOpened(notificationOpenedCallback)
+		   .endInit();
+			
+    
+    }
+    
+  
+    </script>
+    
+  </head>
+
+  <body
+    ng-app="browserAPP"
+    ng-controller="MainController"
+    ui-prevent-touchmove-defaults
+    >
+
+
+    <div ng-include="'sidebarRight.html'" class="sidebar sidebar-right"></div>
+
+    <div class="app" onloadedmetadata=""ui-swipe-right="Ui.turnOn('uiSidebarLeft')" ui-swipe-left="Ui.turnOff('uiSidebarLeft')">
+
+      <div class="navbar navbar-app navbar-absolute-bottom">
+        <div class="btn-group justified">
+        
+          <button class="btn btn-primary btn-block" onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')"><i class="fa fa-share-alt"></i> Share</button>
+ 			
+ 		  <div ui-toggle="uiSidebarRight" class="btn sidebar-right-toggle">
+            <i class="fa fa-bell"></i> Notifications
+          </div>
+        
+        </div>
+      </div>
+
+      <!-- App Body -->
+      <div class="app-body" ng-class="{loading: loading}">
+        <div ng-show="loading" class="app-content-loading">
+          <i class="fa fa-spinner fa-spin loading-spinner"></i>
+        </div>
+        <div class="app-content">
+          <ng-view></ng-view>
+        </div>
+      </div>
+
+    </div><!-- ~ .app -->
+
+    <div ui-yield-to="modals"></div>
+    <!-- ng cordova js -->
+  	<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+	<!-- cordova script (this will be a 404 during development) -->
+  	<script src="cordova.js"></script>
+  
+  </body>
+</html>
