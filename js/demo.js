@@ -23,6 +23,10 @@ app.run(function($transform) {
   window.$transform = $transform;
 });
 
+app.config(function($routeProvider) 
+{
+  $routeProvider.when('/', {templateUrl: 'home.html', reloadOnSearch: false});
+}
 
 //
 // For this trivial demo we have just a unique MainController
@@ -43,6 +47,12 @@ app.controller('MainController', function($rootScope, $scope , $http)
 			.then(function(response) {
 				$scope.messages = response.data;
 			});
+			
+		$scope.center = function () 
+		{
+			 var ref = cordova.InAppBrowser.open('http://www.grandmasters.in', '_blank', 'location=no','toolbar=no');	 			
+		};
+
 
 	
 });
