@@ -43,7 +43,7 @@ app.controller('MainController', function($rootScope, $scope , $http)
 				$scope.messages = response.data;
 			});
 			
-		$scope.center = function () 
+		$scope.open = function () 
 		{
 			 var ref = cordova.InAppBrowser.open('http://www.grandmasters.in', '_blank', 'location=no','toolbar=no');	 			
 		};

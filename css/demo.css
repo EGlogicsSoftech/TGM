@@ -1,3 +1,7 @@
+.app
+{
+	background: #fff !important;
+}
 #lightbulb {
   font-size: 100px;
   display: block;
