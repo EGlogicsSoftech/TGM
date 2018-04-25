@@ -23,11 +23,6 @@ app.run(function($transform) {
   window.$transform = $transform;
 });
 
-app.config(function($routeProvider) 
-{
-  $routeProvider.when('/', {templateUrl: 'home.html', reloadOnSearch: false});
-}
-
 //
 // For this trivial demo we have just a unique MainController
 // for everything
